@@ -7,7 +7,7 @@ my_dict = {
         'three': 'apple',
         'four': 'grape',
         'five': 'blueberry'
-        },
+    },
     'set': {1, 'New York', 2, 'London', 3, 'Brasilia'}
 }
 
