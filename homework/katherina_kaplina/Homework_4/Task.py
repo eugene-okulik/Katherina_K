@@ -14,7 +14,7 @@ my_dict = {
 print(my_dict['tuple'][-1])
 my_dict['list'].append('last element')
 my_dict['list'].pop(1)
-my_dict['dict']['i am a tuple'] = (1, 2, 3)
+my_dict['dict'][('i am a tuple',)] = (1, 2, 3)
 my_dict['dict'].pop('one')
 my_dict['set'].add('Milan')
 my_dict['set'].pop()
