@@ -15,5 +15,5 @@ for word in words:
     else:
         formatted_word = word + 'ing'
     formatted_text.append(formatted_word)
-    
+
 print(' '.join(formatted_text))
