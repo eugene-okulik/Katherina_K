@@ -11,9 +11,9 @@ for word in words:
     elif '.' in word:
         formatted_word = word[:-1] + 'ing.'
     elif '”' in word:
-        formatted_word = word[:-1] + 'ing”'   
+        formatted_word = word[:-1] + 'ing”'
     else:
         formatted_word = word + 'ing'
-    formatted_text.append(formatted_word) 
-
+    formatted_text.append(formatted_word)
+    
 print(' '.join(formatted_text))
