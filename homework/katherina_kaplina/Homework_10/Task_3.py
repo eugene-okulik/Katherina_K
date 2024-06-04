@@ -3,7 +3,7 @@ second_user_number = int(input('Enter second number: '))
 
 
 def operation_determ(func):
-    
+
     def wrapper(first, second):
 
         if first == second:
@@ -17,7 +17,7 @@ def operation_determ(func):
         else:
             operation = None
         return func(first, second, operation)
-        
+
     return wrapper
 
 
