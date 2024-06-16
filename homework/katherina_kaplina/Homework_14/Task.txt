@@ -1,0 +1,32 @@
+insert into students (name, second_name, group_id) values ('Kate', 'Ivanova', 1268)
+
+insert into `groups` (title, start_date, end_date) values ('second', 'sept 2023', 'may 2024')
+
+insert into books (title, taken_by_student_id) values ('maths', 1346)
+insert into books (title, taken_by_student_id) values ('algoritms', 1346)
+insert into books (title, taken_by_student_id) values ('py', 1346)
+
+insert into subjets (title) values ('mathematics')
+insert into subjets (title) values ('chemistry')
+
+insert into lessons (title, subject_id) values ('mathematics 1', 1773)
+insert into lessons (title, subject_id) values ('mathematics 2', 1773)
+insert into lessons (title, subject_id) values ('chemistry 1', 1774)
+insert into lessons (title, subject_id) values ('chemistry 2', 1774)
+
+insert into marks (value , lesson_id, student_id) values ('perfect', 4074, 1346)
+insert into marks (value , lesson_id, student_id) values ('good', 4075, 1346)
+insert into marks (value , lesson_id, student_id) values ('could be better', 4076, 1346)
+insert into marks (value , lesson_id, student_id) values ('bad', 4077, 1346)
+
+
+select * from marks where student_id = 1346
+
+select * from books where taken_by_student_id = 1346
+
+select s.name, s.second_name, b.title, m.value, l.title, s2.title from students s
+join books b on s.id = b.taken_by_student_id
+join marks m on s.id = m.student_id
+join lessons l on m.lesson_id = l.id
+join subjets s2 on l.subject_id  = s2.id
+where s.id = 1346
