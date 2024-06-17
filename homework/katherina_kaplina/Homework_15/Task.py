@@ -51,7 +51,7 @@ for row in results_2:
     print(row)
 
 query = '''
-    select s.name, s.second_name, b.title, m.value, l.title, s2.title 
+    select s.name, s.second_name, b.title, m.value, l.title, s2.title
     from students s
     join books b on s.id = b.taken_by_student_id
     join marks m on s.id = m.student_id
