@@ -10,16 +10,17 @@ db = mysql.connect(
 
 cursor = db.cursor(dictionary=True)
 
-cursor.execute("insert into `groups` (title, start_date, end_date) values ('third', 'sept 2023', 'may 2024')")
-
-group_id_my = cursor.lastrowid
-
-cursor.execute(f"insert into students (name, second_name, group_id) values ('Kate', 'Petrova', {group_id_my})")
+cursor.execute(f"insert into students (name, second_name) values ('Kate', 'Petrova23456')")
 student_id = cursor.lastrowid
 
 cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_1', {student_id})")
 cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_2', {student_id})")
 cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_3', {student_id})")
+
+cursor.execute("insert into `groups` (title, start_date, end_date) values ('third', 'sept 2023', 'may 2024')")
+group_id_my = cursor.lastrowid
+
+cursor.execute(f"update students set group_id = {group_id_my} where id = {student_id}")
 
 cursor.execute("insert into subjets (title) values ('mathematics_1')")
 subject_id_1 = cursor.lastrowid
