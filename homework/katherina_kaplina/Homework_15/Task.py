@@ -10,43 +10,61 @@ db = mysql.connect(
 
 cursor = db.cursor(dictionary=True)
 
-cursor.execute(f"insert into students (name, second_name) values ('Kate', 'Petrova23456')")
+query = "insert into students (name, second_name) values ( %s,  %s)"
+cursor.execute(query, ('Kate', 'Petrova234567'))
 student_id = cursor.lastrowid
 
-cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_1', {student_id})")
-cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_2', {student_id})")
-cursor.execute(f"insert into books (title, taken_by_student_id) values ('algebra_3', {student_id})")
+query = "insert into books (title, taken_by_student_id) values ('algebra_1', %s)"
+cursor.execute(query, (student_id,))
+query = "insert into books (title, taken_by_student_id) values ('algebra_2', %s)"
+cursor.execute(query, (student_id,))
+query = "insert into books (title, taken_by_student_id) values ('algebra_3', %s)"
+cursor.execute(query, (student_id,))
 
-cursor.execute("insert into `groups` (title, start_date, end_date) values ('third', 'sept 2023', 'may 2024')")
+query = "insert into `groups` (title, start_date, end_date) values (%s, %s, %s)"
+cursor.execute(query, ('third', 'sept 2023', 'may 2024'))
 group_id_my = cursor.lastrowid
 
-cursor.execute(f"update students set group_id = {group_id_my} where id = {student_id}")
+query = "update students set group_id = %s where id = %s"
+cursor.execute(query, (group_id_my, student_id))
 
-cursor.execute("insert into subjets (title) values ('mathematics_1')")
+query = "insert into subjets (title) values (%s)"
+cursor.execute(query, ('mathematics_1',))
 subject_id_1 = cursor.lastrowid
-cursor.execute("insert into subjets (title) values ('chemistry_1')")
+query = "insert into subjets (title) values (%s)"
+cursor.execute(query, ('chemistry_1',))
 subject_id_2 = cursor.lastrowid
 
-cursor.execute(f"insert into lessons (title, subject_id) values ('mathematics_11', {subject_id_1})")
+query = "insert into lessons (title, subject_id) values ('mathematics_11', %s)"
+cursor.execute(query, (subject_id_1,))
 lesson_id_11 = cursor.lastrowid
-cursor.execute(f"insert into lessons (title, subject_id) values ('mathematics_22', {subject_id_1})")
+query = "insert into lessons (title, subject_id) values ('mathematics_22', %s)"
+cursor.execute(query, (subject_id_1,))
 lesson_id_12 = cursor.lastrowid
-cursor.execute(f"insert into lessons (title, subject_id) values ('liter_11', {subject_id_2})")
+query = "insert into lessons (title, subject_id) values ('liter_11', %s)"
+cursor.execute(query, (subject_id_2,))
 lesson_id_21 = cursor.lastrowid
-cursor.execute(f"insert into lessons (title, subject_id) values ('liter_22', {subject_id_2})")
+query = "insert into lessons (title, subject_id) values ('liter_22', %s)"
+cursor.execute(query, (subject_id_2,))
 lesson_id_22 = cursor.lastrowid
 
-cursor.execute(f"insert into marks (value , lesson_id, student_id) values ('very bad', {lesson_id_11}, {student_id})")
-cursor.execute(f"insert into marks (value , lesson_id, student_id) values ('not so bad', {lesson_id_12}, {student_id})")
-cursor.execute(f"insert into marks (value , lesson_id, student_id) values ('bad', {lesson_id_21}, {student_id})")
-cursor.execute(f"insert into marks (value , lesson_id, student_id) values ('bad', {lesson_id_22}, {student_id})")
+query = "insert into marks (value , lesson_id, student_id) values ('very bad', %s, %s)"
+cursor.execute(query, (lesson_id_11, student_id))
+query = "insert into marks (value , lesson_id, student_id) values ('not so bad', %s, %s)"
+cursor.execute(query, (lesson_id_12, student_id))
+query = "insert into marks (value , lesson_id, student_id) values ('very bad', %s, %s)"
+cursor.execute(query, (lesson_id_21, student_id))
+query = "insert into marks (value , lesson_id, student_id) values ('good', %s, %s)"
+cursor.execute(query, (lesson_id_22, student_id))
 
-cursor.execute(f'select * from marks where student_id = {student_id}')
+query = "select * from marks where student_id = %s"
+cursor.execute(query, (student_id,))
 results_1 = cursor.fetchall()
 for row in results_1:
     print(row)
 
-cursor.execute(f'select * from books where taken_by_student_id = {student_id}')
+query = "select * from books where taken_by_student_id = %s"
+cursor.execute(query, (student_id,))
 results_2 = cursor.fetchall()
 for row in results_2:
     print(row)
