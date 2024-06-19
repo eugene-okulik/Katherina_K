@@ -23,8 +23,8 @@ with open(csv_file_path, 'r') as file:
 
 cursor = db.cursor(dictionary=True)
 query = '''
-select s.name, s.second_name, `groups`.title as group_title, b.title as book_title, 
-s2.title as subject_title, l.title as lesson_title, m.value as mark_value 
+select s.name, s.second_name, `groups`.title as group_title, b.title as book_title,
+s2.title as subject_title, l.title as lesson_title, m.value as mark_value
 from students s
 join `groups` on s.group_id = `groups`.id
 join books b on s.id = b.taken_by_student_id
