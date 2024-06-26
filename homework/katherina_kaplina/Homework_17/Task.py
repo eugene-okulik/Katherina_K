@@ -30,7 +30,7 @@ def search_text_in_file(directory: str, text: str):
                             first = text_index - 5
                         last = text_index + 5
                         data = ' '.join(words[first:last])
-                        file_result.append((line_number+1, data))
+                        file_result.append((line_number + 1, data))
             result.append((file_path, file_result))
     return result
 
