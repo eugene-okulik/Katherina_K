@@ -9,11 +9,11 @@ def add_object():
             "price": 200,
             "CPU model": "Intel Core i9",
             "Hard disk size": "1 TB"
-            }
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post(
-        'https://api.restful-api.dev/objects', 
+        'https://api.restful-api.dev/objects',
         json=body,
         headers=headers
     )
@@ -36,11 +36,11 @@ def new_object():
             "price": 200,
             "CPU model": "Intel Core i9",
             "Hard disk size": "1 TB"
-            }
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post(
-        'https://api.restful-api.dev/objects', 
+        'https://api.restful-api.dev/objects',
         json=body,
         headers=headers
     )
@@ -48,7 +48,7 @@ def new_object():
 
 
 def clear(object_id):
-    response = requests.delete(f'https://api.restful-api.dev/objects/{object_id}')
+    requests.delete(f'https://api.restful-api.dev/objects/{object_id}')
 
 
 def update_object():
@@ -61,11 +61,11 @@ def update_object():
             "CPU model": "Intel Core i9",
             "Hard disk size": "10 TB",
             "color": "white"
-            }
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.put(
-        f'https://api.restful-api.dev/objects/{object_id}', 
+        f'https://api.restful-api.dev/objects/{object_id}',
         json=body,
         headers=headers
     )
@@ -91,11 +91,11 @@ def partially_update_object():
             "CPU model": "Intel Core i9",
             "Hard disk size": "10 TB",
             "color": "gold"
-            }
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.patch(
-        f'https://api.restful-api.dev/objects/{object_id}', 
+        f'https://api.restful-api.dev/objects/{object_id}',
         json=body,
         headers=headers
     )
