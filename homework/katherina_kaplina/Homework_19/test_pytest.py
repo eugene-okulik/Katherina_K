@@ -101,7 +101,7 @@ def test_partially_update_object(new_object_id):
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.patch(
-        f'https://api.restful-api.dev/objects/{new_object_id}', 
+        f'https://api.restful-api.dev/objects/{new_object_id}',
         json=body,
         headers=headers
     )
