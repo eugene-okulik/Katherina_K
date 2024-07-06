@@ -137,4 +137,3 @@ def test_delete_object(new_object_id):
     with allure.step('Check status code is 200'):
         assert response.status_code == 200, 'Status code is incorrect'
     print('after test')
-    
