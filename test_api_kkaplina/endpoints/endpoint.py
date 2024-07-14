@@ -24,7 +24,7 @@ class Endpoint:
         assert self.json['data']['price'] == price
 
     @allure.step('Check CPU model')
-    def check_cpu_model_is_correct(self,  cpu_model):
+    def check_cpu_model_is_correct(self, cpu_model):
         assert self.json['data']['CPU model'] == cpu_model
 
     @allure.step('Check Hard disk size')

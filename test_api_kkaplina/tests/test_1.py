@@ -2,14 +2,14 @@ import pytest
 
 TEST_DATA = [
     {
-            "name": "Apple MacBook Pro 2024 Kate",
-            "data": {
-                "year": 2024,
-                "price": 200,
-                "CPU model": "Intel Core i9",
-                "Hard disk size": "1 TB"
-            }
-        },
+        "name": "Apple MacBook Pro 2024 Kate",
+        "data": {
+            "year": 2024,
+            "price": 200,
+            "CPU model": "Intel Core i9",
+            "Hard disk size": "1 TB"
+        }
+    },
     {
         "name": "HP 2024 Kate",
         "data": {
@@ -20,6 +20,7 @@ TEST_DATA = [
         }
     },
 ]
+
 
 @pytest.mark.parametrize('data', TEST_DATA)
 def test_add_object(post_create_object, data):
