@@ -22,9 +22,11 @@ def put_update_object():
 def patch_update_object():
     return PartialUpdateObject()
 
+
 @pytest.fixture()
 def get_request_object():
     return GetRequestObject()
+
 
 @pytest.fixture()
 def delete_object():
