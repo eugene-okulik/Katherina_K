@@ -1,4 +1,4 @@
-from project.Katherina_K.test_api_kkaplina.endpoints.endpoint import Endpoint
+from test_api_kkaplina.endpoints.endpoint import Endpoint
 import requests
 import allure
 

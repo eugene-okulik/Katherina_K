@@ -56,7 +56,7 @@ def test_update_object(new_object_id, put_update_object):
     put_update_object.check_color_is_correct(payload['data']['color'])
 
 
-def test_partially_update_object(new_object_id, patch_update_object):
+def test_partially_update_object(new_object_id, patch_update_object, get_request_object):
 
     payload = {
         "data": {
@@ -66,14 +66,14 @@ def test_partially_update_object(new_object_id, patch_update_object):
         }
     }
 
-    original_data = patch_update_object.get_object(new_object_id)
+    original_data = get_request_object.get_object(new_object_id)
     patch_update_object.make_partial_changes_in_object(new_object_id, payload)
     patch_update_object.check_status_code_is_correct(status_code=200)
-    patch_update_object.check_name_is_correct(original_data['name'])
+    get_request_object.check_name_is_correct(original_data['name'])
     patch_update_object.check_year_is_correct(payload['data']['year'])
     patch_update_object.check_price_is_correct(payload['data']['price'])
-    patch_update_object.check_cpu_model_is_correct(original_data['data']['CPU model'])
-    patch_update_object.check_hard_disk_size_is_correct(original_data['data']['Hard disk size'])
+    get_request_object.check_cpu_model_is_correct(original_data['data']['CPU model'])
+    get_request_object.check_hard_disk_size_is_correct(original_data['data']['Hard disk size'])
     patch_update_object.check_color_is_correct(payload['data']['color'])
 
 
