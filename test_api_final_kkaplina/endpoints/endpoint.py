@@ -1,35 +1,27 @@
 import allure
-import requests
+from .authorization import Authorization
 
 
 class Endpoint:
     url = 'http://167.172.172.115:52355/meme'
-    auth_url = 'http://167.172.172.115:52355/authorize'
+    # auth_url = 'http://167.172.172.115:52355/authorize'
     response = None
     json = None
-    token = None
     errors = []
+    auth = Authorization()
 
-    def is_token_alive(self, token):
-        response = requests.get(f'{self.auth_url}/{token}')
-        return response.status_code == 200
-
-    def authorization_token(self):
-        if self.token is None or not self.is_token_alive:
-            try:
-                response = requests.post(self.auth_url, json={"name": "Kate"})
-                self.token = response.json().get('token')
-            except requests.exceptions.RequestException as exception:
-                print(f"Authorization failed: {exception}")
-                self.token = None
-
-    def get_headers(self, token):
-        if not self.token:
-            self.authorization_token()
+    def get_headers(self, token=None):
+        if token is None:
+            token = self.auth.authorization_token()
         return {
             'Content-Type': 'application/json',
             'Authorization': f'{token}'
         }
+
+    def log_response(self):
+        if self.response:
+            allure.attach(str(self.response.status_code), 'Status Code')
+            allure.attach(self.response.text, 'Response Body')
 
     @allure.step('Check status code')
     def check_status_code_is_correct(self, status_code):
@@ -54,10 +46,6 @@ class Endpoint:
     @allure.step('Check info')
     def check_info_is_correct(self, info):
         assert self.json is not None and self.json['info'] == info
-
-    @allure.step('Check response is list')
-    def check_response_is_list(self, data):
-        assert self.json is not None and isinstance(data, list)
 
     @allure.step('Check id')
     def check_id_is_correct(self, meme_id):

@@ -1,6 +1,5 @@
-invalid_token = 'qqq6oJ0R6oDqqqq'
+invalid_token = 'qqq6oJ0R6oDqyyq'
 another_user_token = 'olX6oJ0R6oDQ0La'
-
 
 TEST_DATA_CREATE = [
     {
@@ -138,6 +137,14 @@ NEGATIVE_DATA_CREATE = [
         "text": "How to enter a password"
     }
 ]
+
+TEST_DATA_UPDATE = {
+    "id": 100,
+    "text": "Updated - How to enter a password",
+    "url": "https://i.pinimg.com/originals/80/33/80/8033801dc20c8e502ace19c9cb6469a8.jpg",
+    "tags": ["updated - password", "updated - shrek"],
+    "info": {"000": ["111", "222"]}
+}
 
 NEGATIVE_DATA_UPDATE = [
     {
