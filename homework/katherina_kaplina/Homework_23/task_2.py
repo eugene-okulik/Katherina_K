@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 
 @pytest.fixture()
@@ -18,7 +19,7 @@ def test_hw_2(driver):
         "last_name_data": "Test",
         "user_email_data": "kate@test.test",
         "user_mobile_data": "1234567890",
-        "subject_data": "Python's convenience has made it the most popular language for ML and AI.",
+        "subject_data": "English",
         "user_address_data": "1st street Minsk"
     }
 
@@ -33,19 +34,18 @@ def test_hw_2(driver):
     user_email = driver.find_element(By.ID, 'userEmail')
     user_email.send_keys(input_data["user_email_data"])
 
-    gender_radio = driver.find_element(By.ID, 'gender-radio-1')
-    # gender_radio.click()
-    driver.execute_script("arguments[0].click();", gender_radio)
+    gender_radio = driver.find_element(By.CSS_SELECTOR, '[for="gender-radio-2"]')
+    gender_radio.click()
 
     user_mobile = driver.find_element(By.ID, 'userNumber')
     user_mobile.send_keys(input_data["user_mobile_data"])
 
     subject = driver.find_element(By.ID, 'subjectsInput')
     subject.send_keys(input_data["subject_data"])
+    subject.send_keys(Keys.ENTER)
 
-    hobby_checkbox = driver.find_element(By.ID, 'hobbies-checkbox-1')
-    # hobby_checkbox.click()
-    driver.execute_script("arguments[0].click();", hobby_checkbox)
+    hobby_checkbox = driver.find_element(By.CSS_SELECTOR, '[for="hobbies-checkbox-2"]')
+    hobby_checkbox.click()
 
     user_address = driver.find_element(By.ID, 'currentAddress')
     user_address.send_keys(input_data["user_address_data"])
