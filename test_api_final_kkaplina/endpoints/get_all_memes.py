@@ -19,3 +19,7 @@ class GetAllMemes(Endpoint):
                 self.json = None
         else:
             self.json = None
+
+    @allure.step('Check response is list')
+    def check_response_is_list(self, data):
+        assert self.json is not None and isinstance(data, list)

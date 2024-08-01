@@ -1,17 +1,21 @@
 import pytest
-from test_api_final_kkaplina.endpoints.endpoint import Endpoint
+# from test_api_final_kkaplina.endpoints.endpoint import Endpoint
 from test_api_final_kkaplina.endpoints.create_meme import CreateMeme
 from test_api_final_kkaplina.endpoints.update_meme import UpdateMeme
 from test_api_final_kkaplina.endpoints.get_meme import GetMeme
 from test_api_final_kkaplina.endpoints.get_all_memes import GetAllMemes
 from test_api_final_kkaplina.endpoints.delete_meme import DeleteMeme
+from test_api_final_kkaplina.endpoints.authorization import Authorization
 
 
 @pytest.fixture(scope='session')
-def token():
-    endpoint = Endpoint()
-    endpoint.authorization_token()
-    return endpoint.token
+def auth():
+    return Authorization()
+
+
+@pytest.fixture(scope='session')
+def token(auth):
+    return auth.authorization_token()
 
 
 @pytest.fixture()
