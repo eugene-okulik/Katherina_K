@@ -3,7 +3,6 @@ import json
 import re
 
 
-
 def test_apple(page: Page):
     def handle_route(route: Route):
         response = route.fetch()
