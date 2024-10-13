@@ -1,0 +1,9 @@
+/dev/null: crw-rw-rw- символьные устройства (с)
+/dev/zero: crw-rw-rw- символьные устройства (с)
+/dev/sda: cannot stat '/dev/sda': No such file or directory
+/dev/tty: crw-rw-rw- символьные устройства (с)
+/root: drwx------ каталоги (d)
+/etc/passwd: -rw-r--r-- файл (-)
+/proc/mounts: lrwxrwxrwx символьные ссылки (l)
+/bin/ls: -rwxr-xr-x  файл (-)
+/bin/zcat: -rwxr-xr-x файл (-)
